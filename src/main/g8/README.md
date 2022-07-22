@@ -1,4 +1,3 @@
-
 # $name;format="camel"$
 
 This is a Scala hello world app, built with the Mill build tool.  
@@ -7,11 +6,11 @@ You can refer to [Mill documentation](https://com-lihaoyi.github.io/mill/mill/In
 Some basic commands:
 ```sh
 # compile
-mill $name;format="camel"$.compile
+mill $name;format="Camel"$.compile
 
 # run
-mill $name;format="camel"$.run
+mill $name;format="Camel"$.run
 
 # test
-mill $name;format="camel"$.test
+mill $name;format="Camel"$.test
 ```
