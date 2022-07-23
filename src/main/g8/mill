@@ -18,20 +18,20 @@ set -e
 
 MILL_REPO_URL="https://github.com/com-lihaoyi/mill"
 
-if [ "x${CURL_CMD}" = "x" ] ; then
+if [ "x\${CURL_CMD}" = "x" ] ; then
   CURL_CMD=curl
 fi
 
 # Explicit commandline argument takes precedence over all other methods
-if [ "x$1" = "x--mill-version" ] ; then
+if [ "x\$1" = "x--mill-version" ] ; then
   shift
-  if [ "x$1" != "x" ] ; then
-    MILL_VERSION="$1"
+  if [ "x\$1" != "x" ] ; then
+    MILL_VERSION="\$1"
     shift
   else
     echo "You specified --mill-version without a version." 1>&2
     echo "Please provide a version that matches one provided on" 1>&2
-    echo "${MILL_REPO_URL}/releases" 1>&2
+    echo "\${MILL_REPO_URL}/releases" 1>&2
     false
   fi
 fi
@@ -40,33 +40,33 @@ fi
 # We reuse it's value and skip searching for a value.
 
 # If not already set, read .mill-version file
-if [ "x${MILL_VERSION}" = "x" ] ; then
+if [ "x\${MILL_VERSION}" = "x" ] ; then
   if [ -f ".mill-version" ] ; then
-    MILL_VERSION="$(head -n 1 .mill-version 2> /dev/null)"
+    MILL_VERSION="\$(head -n 1 .mill-version 2> /dev/null)"
   fi
 fi
 
-if [ "x${XDG_CACHE_HOME}" != "x" ] ; then
-  MILL_DOWNLOAD_PATH="${XDG_CACHE_HOME}/mill/download"
+if [ "x\${XDG_CACHE_HOME}" != "x" ] ; then
+  MILL_DOWNLOAD_PATH="\${XDG_CACHE_HOME}/mill/download"
 else
-  MILL_DOWNLOAD_PATH="${HOME}/.cache/mill/download"
+  MILL_DOWNLOAD_PATH="\${HOME}/.cache/mill/download"
 fi
 
 # If not already set, try to fetch newest from Github
-if [ "x${MILL_VERSION}" = "x" ] ; then
+if [ "x\${MILL_VERSION}" = "x" ] ; then
   # TODO: try to load latest version from release page
   echo "No mill version specified." 1>&2
   echo "You should provide a version via '.mill-version' file or --mill-version option." 1>&2
 
-  mkdir -p "${MILL_DOWNLOAD_PATH}"
-  LANG=C touch -d '1 hour ago' "${MILL_DOWNLOAD_PATH}/.expire_latest" 2>/dev/null || (
+  mkdir -p "\${MILL_DOWNLOAD_PATH}"
+  LANG=C touch -d '1 hour ago' "\${MILL_DOWNLOAD_PATH}/.expire_latest" 2>/dev/null || (
     # we might be on OSX or BSD which don't have -d option for touch
     # but probably a -A [-][[hh]mm]SS
-    touch "${MILL_DOWNLOAD_PATH}/.expire_latest"; touch -A -010000 "${MILL_DOWNLOAD_PATH}/.expire_latest"
+    touch "\${MILL_DOWNLOAD_PATH}/.expire_latest"; touch -A -010000 "\${MILL_DOWNLOAD_PATH}/.expire_latest"
   ) || (
     # in case we still failed, we retry the first touch command with the intention
     # to show the (previously suppressed) error message
-    LANG=C touch -d '1 hour ago' "${MILL_DOWNLOAD_PATH}/.expire_latest"
+    LANG=C touch -d '1 hour ago' "\${MILL_DOWNLOAD_PATH}/.expire_latest"
   )
 
   if [ "${MILL_DOWNLOAD_PATH}/.latest" -nt "${MILL_DOWNLOAD_PATH}/.expire_latest" ] ; then
