@@ -2,8 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog],
-and this project adheres to [Semantic Versioning].
+The format is based on [Keep a Changelog][Keep a Changelog],
+and this project adheres to [Semantic Versioning][Semantic Versioning].
 
 ## [Unreleased]
 
@@ -18,7 +18,6 @@ and this project adheres to [Semantic Versioning].
 ### Fixed
 
 ### Security
-
 
 ## [0.0.1] - 2022-07-21
 - initial release
