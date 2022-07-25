@@ -10,8 +10,8 @@ mill -i init jaacko-torus/mill-scala2.g8
 
 # Template license
 
-Written in 2022 by Julian A Avar C <br/>
-Written in 2016-2021 by Lightbend, Inc.
+Updated in 2022 by Julian A Avar C <br/>
+Written in 2022 by Sakib Hadziavdic
 
 To the extent possible under law, the author(s) have dedicated all copyright and related
 and neighboring rights to this template to the public domain worldwide.
